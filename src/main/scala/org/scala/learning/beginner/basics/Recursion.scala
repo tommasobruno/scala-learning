@@ -1,5 +1,5 @@
 package org.scala.learning
-package org.scala.learning.beginner
+package org.scala.learning.beginner.basics
 
 import scala.annotation.tailrec
 

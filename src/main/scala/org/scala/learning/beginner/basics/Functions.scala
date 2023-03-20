@@ -1,7 +1,5 @@
 package org.scala.learning
-package org.scala.learning.beginner
-
-import scala.annotation.tailrec
+package org.scala.learning.beginner.basics
 
 object Functions extends App {
 
