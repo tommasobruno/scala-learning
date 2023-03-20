@@ -12,7 +12,7 @@ object OOPBasicExercises extends App {
 
     class Novel(name: String, val yearOfRelease: Int, author: Writer) {
 
-      def authorAge(): Int = author.year
+      def authorAge(): Int = yearOfRelease - author.year
 
       def isWrittenBy(author: Writer): Boolean =
         this.author.firstName == author.firstName &&
@@ -22,7 +22,7 @@ object OOPBasicExercises extends App {
     }
 
     val writerInstance = new Writer("Tommaso", "Bruno", 1999)
-    val novelInstance = new Novel("Sherlock Holmes", 1543, writerInstance)
+    val novelInstance = new Novel("Sherlock Holmes", 2020, writerInstance)
 
     val newNovel = novelInstance.copy(2004)
     println(newNovel.yearOfRelease)
