@@ -2,7 +2,7 @@ package org.scala.learning
 package org.scala.learning.beginner.oop
 
 
-object OOPBasicExercises extends App {
+object BasicExercises extends App {
 
   private def writerNovelClass() = {
     class Writer(val firstName: String, val surname: String, val year: Int) {
