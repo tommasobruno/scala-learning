@@ -1,5 +1,5 @@
 package org.scala.learning
-package org.scala.learning.beginner.basics
+package beginner.lectures.basics
 
 object ValuesVariablesTypes extends App {
 

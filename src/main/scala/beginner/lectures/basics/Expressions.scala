@@ -1,5 +1,5 @@
 package org.scala.learning
-package org.scala.learning.beginner.basics
+package beginner.lectures.basics
 
 object Expressions extends App {
 
@@ -19,7 +19,7 @@ object Expressions extends App {
   } // -> true
 
   private val someOtherValue = {
-    if(someValue) 239 else 986
+    if (someValue) 239 else 986
   } // -> 239
 
   println(someValue)

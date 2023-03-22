@@ -1,9 +1,9 @@
 package org.scala.learning
-package org.scala.learning.beginner.oop
+package beginner.exercises
 
-import scala.language.postfixOps
+import scala.language.postfixOps;
 
-object MethodNotations extends App {
+object MethodNotationsExercises extends App {
 
   /*
   Exercises
@@ -14,6 +14,7 @@ object MethodNotations extends App {
     def unary_+ : Person = new Person(name = this.name, age = this.age + 1)
 
     private def learns(s: String): String = s"$name learns $s"
+
     def learnsScala: String = this.learns("Scala")
 
     def apply(times: Int): String = s"$name watched $favMovie $times times"

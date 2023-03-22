@@ -1,6 +1,5 @@
 package org.scala.learning
-package org.scala.learning.beginner.oop
-
+package beginner.exercises
 
 object BasicExercises extends App {
 
@@ -36,9 +35,11 @@ object BasicExercises extends App {
       def getCurrent(): Int = this.value
 
       def increment(): Counter = new Counter(this.value + 1)
+
       def increment(value: Int) = new Counter(this.value + value)
 
       def decrement(): Counter = new Counter(this.value - 1)
+
       def decrement(value: Int) = new Counter(this.value - value)
     }
 
