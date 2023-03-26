@@ -21,9 +21,9 @@ object TuplesAndMapsExercises extends App {
         - if there is social connection between to people (direct or not)
    */
   type Person = String
-  case class SocialNetwork(net: Map[String, List[Person]]) {
+  case class SocialNetwork(net: Map[String, Set[Person]]) {
     def addPerson(person: Person): SocialNetwork = {
-      val tuplePerson = (person, List.empty[Person])
+      val tuplePerson = (person, Set.empty[Person])
       SocialNetwork(net + tuplePerson)
     }
 
@@ -35,38 +35,39 @@ object TuplesAndMapsExercises extends App {
       if (!net.contains(from) || !net.contains(to)) {
         SocialNetwork(net)
       } else {
-        val newFriends = from -> net(from).filter(!_.equals(to))
-        val toFriends = to -> net(from).filter(!_.equals(from))
-        SocialNetwork(net + newFriends)
+        val newFriends: Set[Person] = net(from) - to
+        val toFriends: Set[Person] = net(to) - from
+        SocialNetwork(net + (from -> newFriends) + (to -> toFriends))
       }
     }
 
     def addFriend(from: Person, to: Person): SocialNetwork = {
       if (!net.contains(from) || !net.contains(to)) {
         SocialNetwork(net)
-      } else if (!net(from).contains(to)) {
-        val newFriends = from -> (net(from) :+ to)
-        val toFriends = to -> (net(to) :+ from)
-        SocialNetwork(net + newFriends + toFriends)
-      } else SocialNetwork(net)
+      } else {
+        val newFriends: Set[Person] = net(from) + to
+        val toFriends: Set[Person] = net(to) + from
+        SocialNetwork(net + (from -> newFriends) + (to -> toFriends))
+
+      }
     }
 
     // STATS
 
     def friendsOf(person: Person): Int = {
       if (!net.contains(person)) 0
-      else net(person).length
+      else net(person).size
     }
 
     def personWithMostFriends(): Person = {
-      net.maxBy(_._2.length)._1
+      net.maxBy(_._2.size)._1
     }
 
     def peopleWithNoFriends(): Int = {
       net.filter(pair => pair._2.isEmpty).size
     }
 
-    def isThereSocialConnection(from: Person, to: Person) = {
+    def isThereSocialConnection(from: Person, to: Person): Boolean = {
       if (!net.contains(from) || !net.contains(to)) false
       else if (net(from).contains(to)) true
 
@@ -89,11 +90,13 @@ object TuplesAndMapsExercises extends App {
   val withFriend = social
     .addPerson("Jim")
     .addPerson("Tommy")
-    .addPerson("ToRemove")
+    .addPerson("Mary")
     .addPerson("NoFriend")
+    .addPerson("ToRemove")
+    .removePerson("ToRemove")
 
   println(withFriend)
-  val friendly = withFriend.addFriend("Jim", "Tommy").addFriend("Tommy", "ToRemove")
+  val friendly = withFriend.addFriend("Jim", "Tommy").addFriend("Tommy", "Mary")
   println(friendly)
 
   // Friends
