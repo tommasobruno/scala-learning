@@ -1,8 +1,6 @@
 package org.scala.learning
 package beginner.exercises
 
-import scala.annotation.tailrec
-
 object HOFAndCurriesExercises extends App {
 
   abstract class MyList[+A] {
